@@ -267,14 +267,13 @@ ion-icon[name="search-outline"] {
 
   margin-bottom: 10px;
   transition: transform 0.3s ease-in-out; /* Add a transition for smooth scaling */
+
 }
 
 .topic-item:hover {
   transform: scale(1.1);
 }
-.topic-item img {
-  width: 100%;
-}
+
 
 .topic-category {
   font-size: 1.2rem;

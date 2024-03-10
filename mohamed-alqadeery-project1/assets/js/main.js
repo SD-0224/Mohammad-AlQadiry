@@ -1,6 +1,7 @@
 const toggleDarkButton = document.getElementById("toggle-dark-mode");
 const toggleFavButton = document.getElementById("toggle-favorites");
 const offCanvas = document.querySelector(".off-canvas");
+import { loadTopics } from "./pages/home/home.js";
 
 function toggleDarkMode() {
   document.body.classList.toggle("dark");
@@ -34,4 +35,9 @@ offCanvas.addEventListener("click", (e) => {
   if (!isCardItem) {
     toggleFavorites();
   }
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadTopics();
 });
