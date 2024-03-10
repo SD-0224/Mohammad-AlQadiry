@@ -1,3 +1,5 @@
+
+
 function renderTopicItem(topic) {
     const starsCount = Math.floor(topic.rating);
     const halfStar = topic.rating % 1 ? '<ion-icon name="star-half"></ion-icon>' : '';
@@ -28,7 +30,10 @@ function renderTopicItem(topic) {
 }
 
 export function updateTopicsList(topics) {
-    const topicsListElement = document.querySelector('#topic-list');
+    const topicsSection = document.querySelector('.topics-section');
+    const topicsListElement = topicsSection.querySelector('#topic-list');
+    const topicsTitle = topicsSection.querySelector('#topic-title');
+    topicsTitle.textContent = `"${topics.length}" Web Topics Found`;
     const topicsHTML = topics.map(t=>renderTopicItem(t)).join('');
     topicsListElement.innerHTML = topicsHTML;
 }
