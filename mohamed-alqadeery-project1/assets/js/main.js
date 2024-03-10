@@ -38,6 +38,4 @@ offCanvas.addEventListener("click", (e) => {
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadTopics();
-});
+   
