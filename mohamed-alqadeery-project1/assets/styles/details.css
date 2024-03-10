@@ -28,6 +28,7 @@
   position: relative;
   top: 3em;
   left: 4em;
+  max-width: 300px;
 }
 
 .topic-card-image img {
@@ -72,6 +73,8 @@ a.author-link {
 
 .sub-topics {
   display: flex;
+  margin-top: 3em;
+  margin-bottom:2em;
 }
 
 .list-card {
@@ -105,6 +108,26 @@ a.author-link {
 
 .fav-text {
   display: inline;
+}
+
+#fav-canvs{
+  padding: .5em 2em;
+}
+.cards-list{
+  display: flex;
+  gap: 2em;
+  
+}
+
+.card-item{
+  max-width: 300px;
+  background-color: var(--clr-default);
+}
+
+.card-img{
+  width: 100%;
+  object-fit: cover;
+  
 }
 
 @media (max-width: 400px) {
@@ -164,6 +187,7 @@ a.author-link {
 
   .sub-topics {
     display: flex;
+    margin-bottom: 1em;
   }
 
   .list-card {
