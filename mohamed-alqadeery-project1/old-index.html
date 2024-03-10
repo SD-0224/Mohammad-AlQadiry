@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/styles/variables.css">
+    <link rel="stylesheet" type="text/css" href="assets/styles/styles.css">
+    <title>First Project</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo"><a href="index.html">Web Topics</a></div>
+            <div class="header-actions">
+                <button id="toggle-dark-mode" class="btn-header"> <ion-icon name="moon-outline"
+                        aria-label="apply dark mode"></ion-icon><span class="btn-text">
+                        Dark
+                        Mode
+                    </span></button>
+                <button id="toggle-favorites" class="btn-header">
+                    <ion-icon name="heart-outline" aria-label="favorites list"></ion-icon><span class="btn-text">
+                        Favorites
+                    </span></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="block-design">
+        <div class="primary-triangle">
+
+        </div>
+
+        <div class="secondary-triangle">
+
+        </div>
+
+
+        <div class="welcome-message container">
+            <h2 class="title">Welcome to our website!</h2>
+            <p class="subtitle">We have a new design that's fresh,modern,and easy to use.</p>
+        </div>
+
+    </section>
+
+
+
+    <main class="container">
+        <section class="search-form">
+
+            <form id="searchForm">
+                <div class=" search-container space-nogap">
+                    <ion-icon name="search-outline"></ion-icon>
+
+                    <input name="search" placeholder="Search the website..." aria-label="search input" />
+
+                </div>
+
+                <div style="display: flex; width: 100%;">
+                    <div class="filter-select">
+                        <span class="filter-select-label" aria-label="Select sort by order">Sort by:</span>
+                        <select>
+                            <option value="" selected>Default</option>
+                            <option value="1">Frontend</option>
+                            <option value="2">Backend</option>
+                        </select>
+                    </div>
+                    <div class="filter-select">
+                        <span class="filter-select-label" aria-label="Select sort by filter">Filter by:</span>
+                        <select>
+                            <option value="" selected>Default</option>
+                            <option value="1">Frontend</option>
+                            <option value="2">Backend</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </form>
+
+
+        </section>
+
+        <section class="topics-section">
+            <h2 class="bold">"24" Web Topics Found</h2>
+            <div class="topic-list">
+
+
+                <div class="topic-item">
+                    <a href="details.html"><img src="assets/images/html.png" alt="html image" /></a>
+                    <div class="p-1">
+                        <p class="topic-category">Web Development Languages</p>
+                        <a href="details.html" class="topic-name">HTML</a>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+
+                </div>
+                <div class="topic-item">
+                    <a href="details.html"><img src="assets/images/css.webp" alt="html image" /></a>
+                    <div class="p-1">
+                        <p class="topic-category">Web Development Languages</p>
+                        <a href="details.html" class="topic-name">CSS</a>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+
+                </div>
+
+
+                <div class="topic-item">
+                    <a href="details.html"><img src="assets/images/javascript.jpg" alt="html image" /></a>
+                    <div class="p-1">
+                        <p class="topic-category">Web Development Languages</p>
+                        <a href="details.html" class="topic-name">Javascript</a>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+
+                <div class="topic-item">
+                    <a href="details.html"> <img src="assets/images/jquery.png" alt="html image" /></a>
+                    <div class="p-1">
+                        <p class="topic-category">Web Development Languages</p>
+                        <a href="details.html" class="topic-name">JQuery</a>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+                <div class="topic-item">
+                    <img src="assets/images/angular.png" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Frontend Frameworks and Libraries</p>
+                        <p class="topic-name">Angular</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+                <div class="topic-item">
+                    <img src="assets/images/react.webp" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Frontend Frameworks and Libraries</p>
+                        <p class="topic-name">React</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+                <div class="topic-item">
+                    <img src="assets/images/vuejs.jpeg" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Frontend Frameworks and Libraries</p>
+                        <p class="topic-name">Vuejs</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+                <div class="topic-item">
+                    <img src="assets/images/nodejs.webp" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Backend Frameworks and Libraries</p>
+                        <p class="topic-name">Nodejs</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+                <div class="topic-item">
+                    <img src="assets/images/expressjs.webp" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Backend Frameworks and Libraries</p>
+                        <p class="topic-name">Express.js</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+                <div class="topic-item">
+                    <img src="assets/images/ruby.jpeg" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Backend Frameworks and Libraries</p>
+                        <p class="topic-name">Ruby on Rails</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+                <div class="topic-item">
+                    <img src="assets/images/django.jpeg" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Backend Frameworks and Libraries</p>
+                        <p class="topic-name">Django</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+
+                <div class="topic-item">
+                    <img src="assets/images/flask.webp" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Backend Frameworks and Libraries</p>
+                        <p class="topic-name">Flask</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+
+                <div class="topic-item">
+                    <img src="assets/images/sql.png" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Database and APIs</p>
+                        <p class="topic-name">SQL</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+                <div class="topic-item">
+                    <img src="assets/images/nosql.png" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Database and APIs</p>
+                        <p class="topic-name">NoSQL</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+                <div class="topic-item">
+                    <img src="assets/images/restapi.jpeg" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Database and APIs</p>
+                        <p class="topic-name">Rest APIs</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+
+                <div class="topic-item">
+                    <img src="assets/images/oauth.png" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Web Development Concepts and Technologies</p>
+                        <p class="topic-name">OAuth</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+                <div class="topic-item">
+                    <img src="assets/images/json.png" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Web Development Concepts and Technologies</p>
+                        <p class="topic-name">JSON</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+                <div class="topic-item">
+                    <img src="assets/images/ajax.gif" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Web Development Concepts and Technologies</p>
+                        <p class="topic-name">AJAX</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+
+                <div class="topic-item">
+                    <img src="assets/images/websockets.png" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Web Development Concepts and Technologies</p>
+                        <p class="topic-name">Websockets</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+                <div class="topic-item">
+                    <img src="assets/images/responsive.gif" alt="html image" />
+                    <div class="p-1">
+                        <p class="topic-category">Web Development Concepts and Technologies</p>
+                        <p class="topic-name">Responsive Design</p>
+                        <div class="stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+
+                        </div>
+                        <p class="grey">Author:Sarah Smith</p>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+        <div id="fav-canvs" class="off-canvas container">
+            <h2>My Favorites Topics</h2>
+            <div class="cards-list">
+                <div class="card-item">
+                    <a href="details.html"> <img src="assets/images/html.png" alt="html image" /></a>
+
+
+                    <a class="topic-name" href="details.html">HTML</a>
+                    <div class="stars">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star-half"></ion-icon>
+
+                    </div>
+                </div>
+                <div class="card-item">
+                    <a href="details.html"> <img src="assets/images/css.webp" alt="css image" /></a>
+
+
+                    <a class="topic-name" href="details.html">CSS</a>
+                    <div class="stars">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">Developed with <ion-icon name="heart"></ion-icon>&copy;2023</p>
+    </footer>
+
+
+    <!-- Js -->
+    <script src="assets/js/main.js"> </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
