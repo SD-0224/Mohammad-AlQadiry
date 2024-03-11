@@ -40,8 +40,26 @@ export function updateTopicsList(topics) {
 }
 
 
-export function initSearchInput(onSearchInput){
+export function onSearchInput(onSearchInput){
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', onSearchInput);
 }
 
+
+
+export function onPageIsLoaded(handleOnPageIsLoaded){
+    document.addEventListener('DOMContentLoaded', handleOnPageIsLoaded);
+}
+
+export function initCategoriesFilters(categories){
+    const filterSelect = document.getElementById('filterSelect');
+    filterSelect.innerHTML = categories.map(category =>
+        `<option value="${category}">${category}</option>`
+    ).join('');
+    filterSelect.insertAdjacentHTML('afterbegin', `<option value="all" selected>All Categories</option>`);
+}
+
+export function onFilterOptionIsSelected(handleFilterOptionIsSelected){
+    const filterSelect = document.getElementById('filterSelect');
+    filterSelect.addEventListener('change', handleFilterOptionIsSelected);
+}

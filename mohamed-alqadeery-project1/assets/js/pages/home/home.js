@@ -1,27 +1,43 @@
 import { getTopicsAsync } from "../../services/topics.service.js";
-import { updateTopicsList ,initSearchInput} from "../../pages/home/home.view.js";
+import { updateTopicsList ,onSearchInput,onPageIsLoaded,initCategoriesFilters,onFilterOptionIsSelected} from "../../pages/home/home.view.js";
 import { startLoading, finishLoading } from "../../helpers/loading/loading.js";
 
 let currentSearch = '';
 let currentFilter = '';
 let currentSort = 'title';
 let searchTimeout ; 
+let topics = [];
+let filteredTopics = [];
 
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const topics = await loadTopics(); 
+
+async function handleOnPageIsLoaded(){
+    topics = await loadTopics(); 
+    const categories = topics.map(topic => topic.category).filter(( category, index, mappedArray) => mappedArray.indexOf(category) === index);
+    initCategoriesFilters(categories);
     updateTopicsList(topics);
-    initSearchInput(handleSearchInput); 
-});
+    onSearchInput(handleSearchInput); 
+   onFilterOptionIsSelected(handleFilterOptionIsSelected);
+}
+
 
 function handleSearchInput(event) {
     currentSearch = event.target.value;
     clearTimeout(searchTimeout); 
     searchTimeout = setTimeout(async () => {
-        const topics = await loadTopics(); 
-        updateTopicsList(topics); 
+        topics = await loadTopics(); 
+        updateTopicsList(currentTopics); 
     }, 300); 
 }
+
+function handleFilterOptionIsSelected(event){
+    let selectedFilter = event.target.value;
+    console.log(selectedFilter);
+    currentFilter = selectedFilter;
+    filteredTopics = selectedFilter == 'all' ? topics : topics.filter(topic => topic.category === selectedFilter);
+    updateTopicsList(filteredTopics);
+}
+
 
 
 
@@ -41,6 +57,7 @@ async function loadTopics() {
     }
 }
 
+//starting page
 
-loadTopics();
+onPageIsLoaded(handleOnPageIsLoaded);
 
