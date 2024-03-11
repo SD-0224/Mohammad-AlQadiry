@@ -29,6 +29,7 @@ function renderTopicItem(topic) {
     `;
 }
 
+
 export function updateTopicsList(topics) {
     const topicsSection = document.querySelector('.topics-section');
     const topicsListElement = topicsSection.querySelector('#topic-list');
@@ -37,3 +38,10 @@ export function updateTopicsList(topics) {
     const topicsHTML = topics.map(t=>renderTopicItem(t)).join('');
     topicsListElement.innerHTML = topicsHTML;
 }
+
+
+export function initSearchInput(onSearchInput){
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', onSearchInput);
+}
+

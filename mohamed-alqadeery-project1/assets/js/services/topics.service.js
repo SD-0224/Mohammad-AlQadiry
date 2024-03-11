@@ -1,8 +1,12 @@
 const baseUrl = 'https://tap-web-1.herokuapp.com';
 
-async function getTopicsAsync(){
+async function getTopicsAsync(searchPhrase=''){
 
-    const response = await fetch(`${baseUrl}/topics/list`);
+    const url = new URL(`${baseUrl}/topics/list`);
+    if(searchPhrase){
+        url.searchParams.set('phrase', searchPhrase);
+    }
+    const response = await fetch(url);
     if(!response.ok){
         const message = `An error has occured: ${response.status}`;
         throw new Error(message);
