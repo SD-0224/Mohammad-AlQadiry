@@ -1,23 +1,34 @@
 import { getTopicsAsync } from "../../services/topics.service.js";
-import { updateTopicsList ,onSearchInput,onPageIsLoaded,initCategoriesFilters,onFilterOptionIsSelected} from "../../pages/home/home.view.js";
+import { updateTopicsList ,onSearchInput,onPageIsLoaded,initCategoriesFilters,onFilterOptionIsSelected,
+    initSortOptions, onSortOptionIsSelected} from "../../pages/home/home.view.js";
 import { startLoading, finishLoading } from "../../helpers/loading/loading.js";
 
 let currentSearch = '';
-let currentFilter = '';
+let currentFilter = 'all';
 let currentSort = 'title';
 let searchTimeout ; 
 let topics = [];
 let filteredTopics = [];
+let sortOptions = ['title','author'];
+let currentSelecedSort = 'title';
 
 
 
 async function handleOnPageIsLoaded(){
     topics = await loadTopics(); 
+    sortTopics(currentSort);
+
     const categories = topics.map(topic => topic.category).filter(( category, index, mappedArray) => mappedArray.indexOf(category) === index);
     initCategoriesFilters(categories);
+
     updateTopicsList(topics);
+
     onSearchInput(handleSearchInput); 
    onFilterOptionIsSelected(handleFilterOptionIsSelected);
+
+    initSortOptions(sortOptions,currentSelecedSort);
+    onSortOptionIsSelected(handleOnSortOptionIsSelected);
+   
 }
 
 
@@ -26,7 +37,7 @@ function handleSearchInput(event) {
     clearTimeout(searchTimeout); 
     searchTimeout = setTimeout(async () => {
         topics = await loadTopics(); 
-        updateTopicsList(currentTopics); 
+        updateTopicsList(topics); 
     }, 300); 
 }
 
@@ -38,6 +49,27 @@ function handleFilterOptionIsSelected(event){
     updateTopicsList(filteredTopics);
 }
 
+function handleOnSortOptionIsSelected(event){
+    let selectedSortOption = event.target.value;
+    console.log(selectedSortOption);
+    currentSelecedSort = selectedSortOption;
+   ;
+    updateTopicsList( sortTopics(currentSelecedSort));
+    
+}
+
+
+function sortTopics( sortOption) {
+    var topicsToBeSort = currentFilter == 'all' ? topics : filteredTopics;
+    return topicsToBeSort.sort((a, b) => {
+        if (sortOption === 'title') {
+            return a.topic.localeCompare(b.topic);
+        } else if (sortOption === 'author') {
+            return a.name.localeCompare(b.name);
+        }
+        return 0;
+    });
+}
 
 
 

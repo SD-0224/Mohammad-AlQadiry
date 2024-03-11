@@ -1,4 +1,4 @@
-
+import { capitalizeFirstLetter } from "../../helpers/helpers.js";
 
 function renderTopicItem(topic) {
     const starsCount = Math.floor(topic.rating);
@@ -52,6 +52,7 @@ export function onPageIsLoaded(handleOnPageIsLoaded){
 }
 
 export function initCategoriesFilters(categories){
+    if(!categories) return;
     const filterSelect = document.getElementById('filterSelect');
     filterSelect.innerHTML = categories.map(category =>
         `<option value="${category}">${category}</option>`
@@ -62,4 +63,18 @@ export function initCategoriesFilters(categories){
 export function onFilterOptionIsSelected(handleFilterOptionIsSelected){
     const filterSelect = document.getElementById('filterSelect');
     filterSelect.addEventListener('change', handleFilterOptionIsSelected);
+}
+
+export function initSortOptions(sortOptions,currentSelecedSort){
+    if(!sortOptions) return;
+    const sortSelect = document.getElementById('sortSelect');
+    sortSelect.innerHTML = sortOptions.map(sortOption =>
+        `<option value="${sortOption}" ${currentSelecedSort === sortOption ? 'selected' : ''}>${capitalizeFirstLetter(sortOption)}</option>`
+    ).join('');
+ 
+}
+
+export function onSortOptionIsSelected(handleOnSortOptionIsSelected){
+    const sortSelect = document.getElementById('sortSelect');
+    sortSelect.addEventListener('change', handleOnSortOptionIsSelected);
 }
