@@ -1,5 +1,5 @@
-export function renderDetailsPage(topic,isFavorite,handleFavoriteClick){
-    
+export function renderDetailsPage(topic, isFavorite, handleFavoriteClick) {
+
     document.querySelector('.topic-details h5').textContent = topic.category;
     document.querySelector('.topic-details h2').textContent = topic.topic;
     document.querySelector('.topic-details p').textContent = topic.description;
@@ -16,9 +16,9 @@ export function renderDetailsPage(topic,isFavorite,handleFavoriteClick){
     favIcon.name = isFavorite ? 'heart' : 'heart-outline';
     console.log(btnFav);
 
-    
+
     btnFav.addEventListener('click', handleFavoriteClick);
-    
+
     const subTopicsContainer = document.querySelector('.sub-topics .card-body');
     subTopicsContainer.innerHTML = topic.subtopics.map(subtopic => `<li class="d-flex align-items-center p-4">
         <ion-icon class="checkmark-circle" name="checkmark-circle-outline"></ion-icon>
@@ -31,13 +31,13 @@ function generateStarsHTML(rating) {
     const halfStar = rating % 1 ? '<ion-icon name="star-half"></ion-icon>' : '';
     const emptyStarsCount = 5 - Math.ceil(rating);
     const stars = '<ion-icon name="star"></ion-icon>'.repeat(starsCount) +
-                  halfStar +
-                  '<ion-icon name="star-outline"></ion-icon>'.repeat(emptyStarsCount);
+        halfStar +
+        '<ion-icon name="star-outline"></ion-icon>'.repeat(emptyStarsCount);
 
     return stars;
 }
 
 
-export function onPageIsLoaded(handleOnPageIsLoaded){
+export function onPageIsLoaded(handleOnPageIsLoaded) {
     document.addEventListener('DOMContentLoaded', handleOnPageIsLoaded);
 }

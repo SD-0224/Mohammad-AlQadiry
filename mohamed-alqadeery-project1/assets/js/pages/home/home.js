@@ -5,7 +5,6 @@ import { startLoading, finishLoading } from "../../helpers/loading/loading.js";
 
 let currentSearch = '';
 let currentFilter = 'all';
-let currentSort = 'title';
 let searchTimeout ; 
 let topics = [];
 let filteredTopics = [];
@@ -16,7 +15,7 @@ let currentSelecedSort = 'title';
 
 async function handleOnPageIsLoaded(){
     topics = await loadTopics(); 
-    sortTopics(currentSort);
+    sortTopics(currentSelecedSort);
 
     const categories = topics.map(topic => topic.category).filter(( category, index, mappedArray) => mappedArray.indexOf(category) === index);
     initCategoriesFilters(categories);

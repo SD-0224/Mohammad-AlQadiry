@@ -423,6 +423,7 @@ ion-icon:is([name="heart"]) {
     width: 50%;
     height: 140px;
   }
+  
 
   .card-item img {
     width: 100%;
@@ -430,6 +431,7 @@ ion-icon:is([name="heart"]) {
     align-self: center;
     justify-self: center;
     border-bottom: 1px black solid;
+    object-fit: cover;
   }
 
   .card-item:hover {

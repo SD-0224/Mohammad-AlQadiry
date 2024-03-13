@@ -22,6 +22,11 @@
   gap: 0.5em;
 }
 
+.card-item-fav__img-wrapper{
+  max-height: 100px;
+  max-width: 200px;
+}
+
 .topic-card-image {
   background-color: #ffffff;
   color: #333333;
