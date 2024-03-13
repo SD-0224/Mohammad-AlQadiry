@@ -1,4 +1,5 @@
-export function renderDetailsPage(topic){
+export function renderDetailsPage(topic,isFavorite,handleFavoriteClick){
+    
     document.querySelector('.topic-details h5').textContent = topic.category;
     document.querySelector('.topic-details h2').textContent = topic.topic;
     document.querySelector('.topic-details p').textContent = topic.description;
@@ -6,6 +7,17 @@ export function renderDetailsPage(topic){
     document.querySelector('.topic-card-image .author-link').textContent = topic.name;
     const starsContainer = document.querySelector('.topic-details .stars');
     starsContainer.innerHTML = generateStarsHTML(topic.rating);
+
+    const btnFav = document.querySelector('.btn-fav');
+    const favText = btnFav.querySelector('.fav-text');
+    const favIcon = btnFav.querySelector('ion-icon');
+
+    favText.textContent = isFavorite ? 'Remove From Favorites' : 'Add To Favorites';
+    favIcon.name = isFavorite ? 'heart' : 'heart-outline';
+    console.log(btnFav);
+
+    
+    btnFav.addEventListener('click', handleFavoriteClick);
     
     const subTopicsContainer = document.querySelector('.sub-topics .card-body');
     subTopicsContainer.innerHTML = topic.subtopics.map(subtopic => `<li class="d-flex align-items-center p-4">
@@ -23,4 +35,9 @@ function generateStarsHTML(rating) {
                   '<ion-icon name="star-outline"></ion-icon>'.repeat(emptyStarsCount);
 
     return stars;
+}
+
+
+export function onPageIsLoaded(handleOnPageIsLoaded){
+    document.addEventListener('DOMContentLoaded', handleOnPageIsLoaded);
 }
