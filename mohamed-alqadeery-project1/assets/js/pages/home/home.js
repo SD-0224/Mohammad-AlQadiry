@@ -1,46 +1,49 @@
 import { getTopicsAsync } from "../../services/topics.service.js";
-import { updateTopicsList ,onSearchInput,onPageIsLoaded,initCategoriesFilters,onFilterOptionIsSelected,
-    initSortOptions, onSortOptionIsSelected} from "../../pages/home/home.view.js";
+import {
+    updateTopicsList, onSearchInput, onPageIsLoaded, initCategoriesFilters, onFilterOptionIsSelected,
+    initSortOptions, onSortOptionIsSelected
+} from "../../pages/home/home.view.js";
 import { startLoading, finishLoading } from "../../helpers/loading/loading.js";
 
 let currentSearch = '';
 let currentFilter = 'all';
-let searchTimeout ; 
+let searchTimeout;
+let searchTimeoutSeconds = 300;
 let topics = [];
 let filteredTopics = [];
-let sortOptions = ['title','author'];
+let sortOptions = ['title', 'author'];
 let currentSelecedSort = 'title';
 
 
 
-async function handleOnPageIsLoaded(){
-    topics = await loadTopics(); 
+async function handleOnPageIsLoaded() {
+    topics = await loadTopics();
     sortTopics(currentSelecedSort);
 
-    const categories = topics.map(topic => topic.category).filter(( category, index, mappedArray) => mappedArray.indexOf(category) === index);
+    const categories = topics.map(topic => topic.category).filter((category, index, mappedArray) => mappedArray.indexOf(category) === index);
     initCategoriesFilters(categories);
 
     updateTopicsList(topics);
 
-    onSearchInput(handleSearchInput); 
-   onFilterOptionIsSelected(handleFilterOptionIsSelected);
+    onSearchInput(handleSearchInput);
+    onFilterOptionIsSelected(handleFilterOptionIsSelected);
 
-    initSortOptions(sortOptions,currentSelecedSort);
+    initSortOptions(sortOptions, currentSelecedSort);
     onSortOptionIsSelected(handleOnSortOptionIsSelected);
-   
+
 }
 
 
 function handleSearchInput(event) {
     currentSearch = event.target.value;
-    clearTimeout(searchTimeout); 
+    clearTimeout(searchTimeout);
     searchTimeout = setTimeout(async () => {
-        topics = await loadTopics(); 
-        updateTopicsList(topics); 
-    }, 300); 
+        topics = await loadTopics();
+        updateTopicsList(topics);
+    }, searchTimeoutSeconds);
 }
 
-function handleFilterOptionIsSelected(event){
+function handleFilterOptionIsSelected(event) {
     let selectedFilter = event.target.value;
     console.log(selectedFilter);
     currentFilter = selectedFilter;
@@ -48,17 +51,17 @@ function handleFilterOptionIsSelected(event){
     updateTopicsList(filteredTopics);
 }
 
-function handleOnSortOptionIsSelected(event){
+function handleOnSortOptionIsSelected(event) {
     let selectedSortOption = event.target.value;
     console.log(selectedSortOption);
     currentSelecedSort = selectedSortOption;
-   ;
-    updateTopicsList( sortTopics(currentSelecedSort));
-    
+    ;
+    updateTopicsList(sortTopics(currentSelecedSort));
+
 }
 
 
-function sortTopics( sortOption) {
+function sortTopics(sortOption) {
     var topicsToBeSort = currentFilter == 'all' ? topics : filteredTopics;
     return topicsToBeSort.sort((a, b) => {
         if (sortOption === 'title') {
@@ -80,11 +83,11 @@ async function loadTopics() {
         finishLoading();
 
         return topics;
-      
+
     } catch (error) {
         console.error("Failed to load topics:", error);
         finishLoading();
-        
+
     }
 }
 
