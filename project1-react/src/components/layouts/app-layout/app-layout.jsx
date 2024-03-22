@@ -5,9 +5,7 @@ export function AppLayout({ children }) {
     return (
         <>
             <Header />
-            <main className="container">
-                {children}
-            </main>
+            {children}
             <Footer />
 
         </>
