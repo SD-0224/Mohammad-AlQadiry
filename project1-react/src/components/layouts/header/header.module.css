@@ -1,4 +1,68 @@
-.headerText{
-    color: red;
-    font-size: 30px;
-}
+/* Header */
+.header {
+    padding-block: 20px;
+    background-color: var(--bg-default);
+    border-bottom: 1px solid #333;
+  }
+  
+  .logo {
+    font-size: 2rem;
+    color: var(--brand-primary);
+    font-weight: bold;
+  }
+  
+  .headerContainer {
+    padding-inline: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .headerActions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btnHeader {
+    border: 1px solid var(--lines-color); /* Transparent border to reserve space */
+    border-radius: 10px;
+    padding: 10px 12px 10px 12px; /* Add padding to see the shadow effect */
+    color: var(--body-text);
+  }
+  
+  .btnText {
+    display: none;
+  }
+
+
+  @media (min-width: 768px) {
+    /* Common */
+  
+  
+    /* Header */
+    .header {
+      padding-block: 20px;
+      background-color: var(--bg-default);
+    }
+  
+    .logo {
+      font-size: 2rem;
+      color: var(--brand-primary);
+    }
+  
+    .headerContainer {
+      padding-inline: 50px;
+    }
+  
+    .btnHeader {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  
+    .btnText {
+      display: inline;
+    }
+  
+    
+  } 

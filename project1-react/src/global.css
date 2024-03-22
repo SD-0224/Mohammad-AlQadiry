@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600;6..12,700&display=swap");
+
+:root {
+  --brand-primary: #0768ac;
+  --brand-secondary: #03c180;
+  --bg-default: #ffffff;
+  --bg-body: #f0f9ff;
+  --lines-color: #dddddd;
+  --body-text: #333333;
+  --heart-color: #dc143c;
+  --font-family: Nunito Sans, sans-serif;
+}
+
+.dark {
+  --brand-primary: #0768ac;
+  --brand-secondary: #03c180;
+  --bg-default: #1a1a1a;
+  --bg-body: #282828;
+  --lines-color: #000000;
+  --body-text: #ededed;
+  --heart-color: #dc143c;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+a,
+img,
+span,
+button {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+html {
+  font-family: var(--font-family);
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--body-text);
+  font-size: 1.6rem;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.3);
+}
+input {
+  appearance: none; /* Remove browser-specific styles */
+  border: none; /* Remove border */
+  outline: none; /* Remove outline on focus */
+  background: none; /* Remove background */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+  font-size: inherit; /* Inherit font size from parent */
+  font-family: inherit; /* Inherit font family from parent */
+  line-height: inherit; /* Inherit line height from parent */
+  color: inherit; /* Inherit text color from parent */
+  /* Add any additional styles you need */
+}
+
+select {
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: var(--body-text);
+}
+
+/* Common */
+.title {
+  color: var(--brand-secondary);
+  font-weight: bold;
+}
+.subtitle {
+  font-weight: 300;
+}
+
+
+.space {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-block: 2px;
+}
+.space-nogap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-block: 2px;
+}
+
+.space-sm-g {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  margin-block: 2px;
+}
+
+.bold {
+  font-weight: 700;
+}

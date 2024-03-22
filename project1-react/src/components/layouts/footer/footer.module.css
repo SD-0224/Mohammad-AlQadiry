@@ -1,4 +1,14 @@
-.footerText{
-    color: blue;
-    font-size: 30px;
-}
+.footer {
+    /* width: 100vw; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footerText {
+    font-weight: bold;
+  }
+
+  ion-icon:is([name="heart"]) {
+    color: var(--heart-color); /* Set the color for icons with the name "star" */
+  }
