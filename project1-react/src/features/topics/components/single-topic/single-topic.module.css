@@ -1,0 +1,50 @@
+/* Adjusting class names to camelCase */
+.topicItem {
+    background-color: var(--bg-default);
+    padding: 0;
+    max-height: 300px;
+    height: 270px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition: transform 0.3s ease-in-out; /* Add a transition for smooth scaling */
+  }
+  
+  .topicItemImgWrapper {
+    width: 100%;
+    height: 160px;
+    max-height: 160px;
+  }
+  .topicItemImgWrapper img {
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  
+  .topicItem:hover {
+    transform: scale(1.1);
+  }
+  
+  .topicCategory {
+    font-size: 1.2rem;
+  }
+  .topicName {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .starsMt30 {
+    margin-top: 30px;
+  }
+  
+  .p1 {
+    padding: 10px;
+  }
+  
+  ion-icon:is([name="star"]), ion-icon:is([name="star-half"]) {
+    color: goldenrod; /* Set the color for star and star-half icons */
+  }
+  
+  .grey {
+    color: grey;
+    font-weight: lighter;
+  }
+  
