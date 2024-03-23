@@ -16,6 +16,16 @@ export function Home() {
             });
     }, []);
 
+    const getCategories = (topics) => {
+        const categories = new Set(topics.map(topic => topic.category));
+        return [...categories];
+
+    }
+
+    const getSortOptions = () => {
+        return ['title', 'author'];
+    }
+
     return (
         <>
             <section className={styles.blockDesign}>
@@ -32,9 +42,9 @@ export function Home() {
                     <div className="container">
                         <form>
                             <div className={`${styles.searchForm} row p-2 align-items-center`}>
-                                <div class="col-12 col-md-7">
+                                <div className="col-12 col-md-7">
 
-                                    <div class="d-flex align-items-baseline">
+                                    <div className="d-flex align-items-baseline">
                                         <ion-icon name="search-outline"></ion-icon>
 
                                         <input id="searchInput" name="search" placeholder="Search the website..."
@@ -45,16 +55,24 @@ export function Home() {
                                 </div>
 
 
-                                <div class="col-6 col-md-2">
+                                <div className="col-6 col-md-2">
                                     <span className={styles.filterSelectLabel} aria-label="Select sort by order">Sort by:</span>
                                     <select id="sortSelect">
-
+                                        {
+                                            getSortOptions().map(option => (
+                                                <option value={option}>{option}</option>
+                                            ))
+                                        }
                                     </select>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div className="col-6 col-md-3">
                                     <span className={styles.filterSelectLabel} aria-label="Select sort by filter">Filter by:</span>
                                     <select id="filterSelect">
-
+                                        {
+                                            getCategories(topics).map(category => (
+                                                <option value={category}>{category}</option>
+                                            ))
+                                        }
                                     </select>
                                 </div>
 
