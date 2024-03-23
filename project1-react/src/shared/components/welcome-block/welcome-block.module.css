@@ -1,0 +1,55 @@
+.blockDesign {
+    background-color: var(--bg-default);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130px;
+  }
+  
+  .primaryTriangle {
+    position: absolute;
+    clip-path: polygon(0 0, 100% 0, 0 25%);
+    background-image: linear-gradient(to right, var(--brand-primary), var(--brand-secondary));
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+  }
+  
+  .secondaryTriangle {
+    position: absolute;
+    clip-path: polygon(100% 0%, 0% 0%, 100% 25%);
+    background-image: linear-gradient(to left, var(--brand-secondary), var(--brand-primary));
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  @media (min-width: 768px) {
+    .blockDesign {
+        background-color: var(--bg-default);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 130px;
+      }
+      
+      .primaryTriangle {
+        position: absolute;
+        clip-path: polygon(0 0, 100% 0, 0 45%);
+        background-image: linear-gradient(to right, var(--brand-primary), #04a28f);
+        height: 100%;
+        width: 100%;
+        z-index: 2;
+      }
+      
+      .secondaryTriangle {
+        position: absolute;
+        clip-path: polygon(100% 0%, 0% 0%, 100% 45%);
+        background-image: linear-gradient(to left, var(--brand-secondary), var(--brand-primary));
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+      }
+  }

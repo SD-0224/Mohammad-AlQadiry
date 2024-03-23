@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getTopics } from "../../features/topics/services/topics.service";
 import { SingleTopic } from "../../features/topics/components/single-topic/single-topic";
 import styles from "./home.module.css"; // Adjusted import here
+import { WelcomeBlock } from "../../shared/components/welcome-block/welcome-block";
 
 export function Home() {
     const [topics, setTopics] = useState([]);
@@ -28,14 +29,7 @@ export function Home() {
 
     return (
         <>
-            <section className={styles.blockDesign}>
-                <div className={styles.primaryTriangle}></div>
-                <div className={styles.secondaryTriangle}></div>
-                <div className="mt-4">
-                    <h2 className="title mb-0">Welcome to our website!</h2>
-                    <p className="subtitle">We have a new design that's fresh, modern, and easy to use.</p>
-                </div>
-            </section >
+            <WelcomeBlock />
 
             <main className="container">
                 <section className={styles.searchFormSection}>
@@ -59,8 +53,8 @@ export function Home() {
                                     <span className={styles.filterSelectLabel} aria-label="Select sort by order">Sort by:</span>
                                     <select id="sortSelect">
                                         {
-                                            getSortOptions().map(option => (
-                                                <option value={option}>{option}</option>
+                                            getSortOptions().map((option, index) => (
+                                                <option key={`${option}-${index}`} value={option}>{option}</option>
                                             ))
                                         }
                                     </select>
@@ -69,8 +63,8 @@ export function Home() {
                                     <span className={styles.filterSelectLabel} aria-label="Select sort by filter">Filter by:</span>
                                     <select id="filterSelect">
                                         {
-                                            getCategories(topics).map(category => (
-                                                <option value={category}>{category}</option>
+                                            getCategories(topics).map((category, index) => (
+                                                <option key={`${category}-${index}`} value={category}>{category}</option>
                                             ))
                                         }
                                     </select>
