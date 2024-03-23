@@ -10,6 +10,7 @@ export function Home() {
     const [topics, setTopics] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState('');
+    const [selectedSort, setSelectedSort] = useState('title');
 
 
     useEffect(() => {
@@ -18,6 +19,7 @@ export function Home() {
             .then(data => {
                 setTopics(data);
                 setIsLoading(false);
+                sortTopics(topics);
             })
             .catch(error => {
                 console.error("Error in fetching topics:", error);
@@ -35,6 +37,14 @@ export function Home() {
         return ['title', 'author'];
     }
 
+
+    const onSortChange = (e) => {
+        setSelectedSort(e.target.value);
+        sortTopics(topics);
+    }
+
+
+
     const onSearchChange = (e) => {
         const searchPhrase = e.target.value;
         setSearchPhrase(searchPhrase);
@@ -48,11 +58,29 @@ export function Home() {
             .then(data => {
                 setTopics(data);
                 setIsLoading(false);
+                sortTopics(topics);
             })
             .catch(error => {
                 console.error("Error in fetching topics:", error);
             });
     }, 300);
+
+
+    const sortTopics = (topics) => {
+
+        topics.sort((a, b) => {
+            if (selectedSort === 'title') {
+                return a.topic.localeCompare(b.topic);
+            } else if (selectedSort === 'author') {
+                return a.name.localeCompare(b.name);
+            }
+            return 0;
+        });
+
+        setTopics(topics);
+    };
+
+
 
     return (
         <>
@@ -78,10 +106,10 @@ export function Home() {
 
                                 <div className="col-6 col-md-2">
                                     <span className={styles.filterSelectLabel} aria-label="Select sort by order">Sort by:</span>
-                                    <select id="sortSelect">
+                                    <select id="sortSelect" onChange={onSortChange}>
                                         {
                                             getSortOptions().map((option, index) => (
-                                                <option key={`${option}-${index}`} value={option}>{option}</option>
+                                                <option key={`${option}-${index}`} value={option} onChange={onSortChange}>{option}</option>
                                             ))
                                         }
                                     </select>
