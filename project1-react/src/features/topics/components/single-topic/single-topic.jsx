@@ -9,15 +9,15 @@ export function SingleTopic({ topic }) {
         <>
 
             <div className={`${styles.topicItem} card`}>
-                <Link href={`details/id=${topic.id}`}>
+                <Link to={`details/${topic.id}`}>
                     <div className={styles.topicItemImgWrapper}>
                         <img src={`assets/images/${topic.image}`} alt={`${topic.topic} image`} className="card-img-top" />
                     </div>
                 </Link>
                 <div className="card-body py-2">
                     <p className={styles.topicCategory}>{topic.category}</p>
-                    <a href={`details.html?id=${topic.id}`} className={styles.topicName}>{topic.topic}</a>
-                    <div className={styles.stars}>
+                    <Link to={`details/${topic.id}`} className={styles.topicName}>{topic.topic}</Link>
+                    <div className="stars">
                         {stars}
                         <p className={styles.grey}>Author: {topic.name}</p>
                     </div>

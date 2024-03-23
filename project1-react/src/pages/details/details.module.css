@@ -1,0 +1,199 @@
+/* Updated CSS with camelCase class names */
+
+.containerXlg {
+  padding-inline: 20%;
+}
+
+.topicAbout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333333;
+  color: #ededed;
+  gap: 2em;
+}
+
+.topicDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.cardItemFavImgWrapper {
+  max-height: 100px;
+  max-width: 200px;
+}
+
+.topicCardImage {
+  background-color: #ffffff;
+  color: #333333;
+  position: relative;
+  top: 3em;
+  left: 4em;
+  max-width: 300px;
+}
+
+.topicCardImage img {
+  width: 100%;
+  padding: 2px;
+}
+
+
+.containerXlg .topicAbout {
+  max-width: 1400px;
+}
+
+.colorSecondary {
+  color: #03c180;
+}
+
+.authorLink {
+  color: var(--brand-primary);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.addToFavorite {
+  border: 1px solid rgb(216, 216, 216);
+  padding-inline: 0.4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 0.5em;
+}
+
+.btnFav {
+  border: 1px solid var(--lines-color);
+  padding: 10px 12px;
+  background-color: #03c180;
+  color: #ffffff;
+}
+
+.lightGrey {
+  color: rgb(162, 159, 159);
+}
+
+.subTopics {
+  display: flex;
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+
+.listCard {
+  background-color: var(--bg-default);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 1.5em;
+  border-radius: 10px;
+  width: 60%;
+}
+
+.cardTitle {
+  border-bottom: 1px solid rgb(162, 159, 159);
+  padding-block: 0.2em;
+}
+
+.cardBody li {
+  font-weight: 500;
+  display: flex;
+  gap: 0.5em;
+  padding-block: 0.8em;
+}
+
+.cardBody li:not(:last-child) {
+  border-bottom: 1px solid rgb(162, 159, 159);
+}
+
+.cardBody li ion-icon {
+  color: var(--brand-secondary);
+}
+
+.favText {
+  display: inline;
+}
+
+#favCanvas {
+  padding: .5em 2em;
+}
+
+.cardsList {
+  display: flex;
+  gap: 2em;
+}
+
+.cardItem {
+  max-width: 300px;
+  background-color: var(--clr-default);
+}
+
+.cardImg {
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 400px) {
+  .containerXlg {
+    padding-inline: 10%;
+    padding-block: 2%;
+  }
+
+  .topicAbout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333;
+    color: #ededed;
+    gap: 2em;
+    padding-block: 1em;
+    text-align: center;
+  }
+
+  .topicCardImage {
+    background-color: #ffffff;
+    color: #333333;
+    text-align: center;
+    position: static;
+  }
+
+  .topicCardImage img {
+    width: 100%;
+    padding: 2px;
+  }
+
+  .colorSecondary {
+    color: #03c180;
+  }
+
+  .addToFavorite {
+    border: 1px solid rgb(216, 216, 216);
+    padding-inline: 0.4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    margin-top: 0.5em;
+  }
+
+  .btnFav {
+    border: 1px solid var(--lines-color); /* Transparent border to reserve space */
+    padding: 10px 12px 10px 12px; /* Add padding to see the shadow effect */
+    background-color: #03c180;
+    color: #ffffff;
+  }
+
+  .subTopics {
+    display: flex;
+    margin-bottom: 1em;
+  }
+
+  .listCard {
+    background-color: var(--bg-default);
+    border: 1px solid rgb(162, 159, 159);
+    padding: 1.5em;
+    border-radius: 10px;
+    width: 100%;
+  }
+}
