@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import styles from "./details.module.css";
 import { renderStars } from "../../shared/helpers/helpers";
 import { getTopicById } from "../../features/topics/services/topics.service";
+import { LoadingSpinner } from "../../shared/components/loading-spinner/loading-spinner";
 
 export function Details() {
     const [topic, setTopic] = useState(null);
@@ -25,7 +26,7 @@ export function Details() {
     }, [id])
 
     if (!topic) {
-        return <p>Loading topic details...</p>;
+        return <LoadingSpinner label={"Loading topic details..."} />
     }
 
 

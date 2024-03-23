@@ -3,6 +3,7 @@ import { getTopics } from "../../features/topics/services/topics.service";
 import { SingleTopic } from "../../features/topics/components/single-topic/single-topic";
 import styles from "./home.module.css"; // Adjusted import here
 import { WelcomeBlock } from "../../shared/components/welcome-block/welcome-block";
+import { LoadingSpinner } from "../../shared/components/loading-spinner/loading-spinner";
 
 export function Home() {
     const [topics, setTopics] = useState([]);
@@ -74,6 +75,11 @@ export function Home() {
                         </form>
                     </div>
                 </section>
+
+
+                {
+                    topics.length === 0 && <LoadingSpinner label={"Loading topics..."} />
+                }
 
                 <section className={styles.topicsSection}>
                     <div className="container">
