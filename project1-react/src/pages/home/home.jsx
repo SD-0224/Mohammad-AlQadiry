@@ -4,14 +4,20 @@ import { SingleTopic } from "../../features/topics/components/single-topic/singl
 import styles from "./home.module.css"; // Adjusted import here
 import { WelcomeBlock } from "../../shared/components/welcome-block/welcome-block";
 import { LoadingSpinner } from "../../shared/components/loading-spinner/loading-spinner";
+import { useDebounce } from "../../shared/helpers/hooks/debounce";
 
 export function Home() {
     const [topics, setTopics] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [searchPhrase, setSearchPhrase] = useState('');
+
 
     useEffect(() => {
+        setIsLoading(true);
         getTopics()
             .then(data => {
                 setTopics(data);
+                setIsLoading(false);
             })
             .catch(error => {
                 console.error("Error in fetching topics:", error);
@@ -24,9 +30,29 @@ export function Home() {
 
     }
 
+
     const getSortOptions = () => {
         return ['title', 'author'];
     }
+
+    const onSearchChange = (e) => {
+        const searchPhrase = e.target.value;
+        setSearchPhrase(searchPhrase);
+        debounceOnSearchChange(searchPhrase);
+
+    }
+
+    const debounceOnSearchChange = useDebounce((searchPhrase) => {
+        setIsLoading(true);
+        getTopics(searchPhrase)
+            .then(data => {
+                setTopics(data);
+                setIsLoading(false);
+            })
+            .catch(error => {
+                console.error("Error in fetching topics:", error);
+            });
+    }, 300);
 
     return (
         <>
@@ -42,8 +68,8 @@ export function Home() {
                                     <div className="d-flex align-items-baseline">
                                         <ion-icon name="search-outline"></ion-icon>
 
-                                        <input id="searchInput" name="search" placeholder="Search the website..."
-                                            aria-label="search input" />
+                                        <input id="searchInput" name="search" value={searchPhrase} placeholder="Search the website..."
+                                            aria-label="search input" onChange={onSearchChange} />
                                     </div>
 
 
@@ -78,7 +104,7 @@ export function Home() {
 
 
                 {
-                    topics.length === 0 && <LoadingSpinner label={"Loading topics..."} />
+                    isLoading && <LoadingSpinner label={"Loading topics..."} />
                 }
 
                 <section className={styles.topicsSection}>

@@ -18,6 +18,7 @@ export function Details() {
                 setTopic(data);
 
 
+
             })
             .catch(error => {
                 console.error("Error in fetching topic:", error);
