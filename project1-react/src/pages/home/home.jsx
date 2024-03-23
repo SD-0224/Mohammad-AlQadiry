@@ -11,15 +11,26 @@ export function Home() {
     const [isLoading, setIsLoading] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState('');
     const [selectedSort, setSelectedSort] = useState('title');
+    const [selectedCategory, setSelectedCategory] = useState('all');
+
 
 
     useEffect(() => {
         setIsLoading(true);
         getTopics()
             .then(data => {
-                setTopics(data);
+                let topicsTobeSorted = data;
+                topicsTobeSorted.sort((a, b) => {
+                    if (selectedSort === 'title') {
+                        return a.topic.localeCompare(b.topic);
+                    } else if (selectedSort === 'author') {
+                        return a.name.localeCompare(b.name);
+                    }
+                    return 0;
+                });
+                setTopics(topicsTobeSorted);
                 setIsLoading(false);
-                sortTopics(topics);
+
             })
             .catch(error => {
                 console.error("Error in fetching topics:", error);
@@ -28,7 +39,7 @@ export function Home() {
 
     const getCategories = (topics) => {
         const categories = new Set(topics.map(topic => topic.category));
-        return [...categories];
+        return ['All', ...categories];
 
     }
 
@@ -40,7 +51,15 @@ export function Home() {
 
     const onSortChange = (e) => {
         setSelectedSort(e.target.value);
-        sortTopics(topics);
+        topics.sort((a, b) => {
+            if (e.target.value === 'title') {
+                return a.topic.localeCompare(b.topic);
+            } else if (e.target.value === 'author') {
+                return a.name.localeCompare(b.name);
+            }
+            return 0;
+        });
+        setTopics(topics);
     }
 
 
@@ -56,9 +75,17 @@ export function Home() {
         setIsLoading(true);
         getTopics(searchPhrase)
             .then(data => {
-                setTopics(data);
+                let topicsTobeSorted = data;
+                topicsTobeSorted.sort((a, b) => {
+                    if (selectedSort === 'title') {
+                        return a.topic.localeCompare(b.topic);
+                    } else if (selectedSort === 'author') {
+                        return a.name.localeCompare(b.name);
+                    }
+                    return 0;
+                });
+                setTopics(topicsTobeSorted);
                 setIsLoading(false);
-                sortTopics(topics);
             })
             .catch(error => {
                 console.error("Error in fetching topics:", error);
@@ -66,19 +93,6 @@ export function Home() {
     }, 300);
 
 
-    const sortTopics = (topics) => {
-
-        topics.sort((a, b) => {
-            if (selectedSort === 'title') {
-                return a.topic.localeCompare(b.topic);
-            } else if (selectedSort === 'author') {
-                return a.name.localeCompare(b.name);
-            }
-            return 0;
-        });
-
-        setTopics(topics);
-    };
 
 
 
