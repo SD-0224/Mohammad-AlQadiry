@@ -93,6 +93,12 @@ export function Home() {
     }, 300);
 
 
+    const onFilterChanged = (e) => {
+        setSelectedCategory(e.target.value);
+        console.log(e.target.value)
+
+    }
+
 
 
 
@@ -130,7 +136,7 @@ export function Home() {
                                 </div>
                                 <div className="col-6 col-md-3">
                                     <span className={styles.filterSelectLabel} aria-label="Select sort by filter">Filter by:</span>
-                                    <select id="filterSelect">
+                                    <select id="filterSelect" onChange={onFilterChanged}>
                                         {
                                             getCategories(topics).map((category, index) => (
                                                 <option key={`${category}-${index}`} value={category}>{category}</option>
