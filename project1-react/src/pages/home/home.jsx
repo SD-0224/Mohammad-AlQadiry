@@ -10,8 +10,9 @@ export function Home() {
     const [topics, setTopics] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState('');
-    const [selectedSort, setSelectedSort] = useState('title');
+    const [selectedSort, setSelectedSort] = useState('default');
     const [selectedCategory, setSelectedCategory] = useState('all');
+    const [filterdTopics, setFilterdTopics] = useState([]);
 
 
 
@@ -29,6 +30,7 @@ export function Home() {
                     return 0;
                 });
                 setTopics(topicsTobeSorted);
+                setFilterdTopics(topicsTobeSorted);
                 setIsLoading(false);
 
             })
@@ -45,21 +47,26 @@ export function Home() {
 
 
     const getSortOptions = () => {
-        return ['title', 'author'];
+        return ['default', 'title', 'author'];
     }
 
 
     const onSortChange = (e) => {
         setSelectedSort(e.target.value);
-        topics.sort((a, b) => {
-            if (e.target.value === 'title') {
-                return a.topic.localeCompare(b.topic);
-            } else if (e.target.value === 'author') {
-                return a.name.localeCompare(b.name);
-            }
-            return 0;
-        });
-        setTopics(topics);
+        if (e.target.value === 'default') {
+            setFilterdTopics(topics);
+        } else {
+            filterdTopics.sort((a, b) => {
+                if (e.target.value === 'title') {
+                    return a.topic.localeCompare(b.topic);
+                } else if (e.target.value === 'author') {
+                    return a.name.localeCompare(b.name);
+                }
+                return 0;
+            });
+            setFilterdTopics(filterdTopics);
+        }
+
     }
 
 
@@ -95,7 +102,11 @@ export function Home() {
 
     const onFilterChanged = (e) => {
         setSelectedCategory(e.target.value);
-        console.log(e.target.value)
+        if (e.target.value === 'All') {
+            setFilterdTopics(topics);
+        } else {
+            setFilterdTopics([...topics].filter(topic => topic.category === e.target.value));
+        }
 
     }
 
@@ -159,7 +170,7 @@ export function Home() {
                     <div className="container">
                         <h2 className="bold my-3"></h2>
                         <div className="row g-3">
-                            {topics.map(topic => (
+                            {filterdTopics.map(topic => (
                                 <div key={topic.id} className="col-12 col-md-3">
                                     <SingleTopic topic={topic} />
                                 </div>
