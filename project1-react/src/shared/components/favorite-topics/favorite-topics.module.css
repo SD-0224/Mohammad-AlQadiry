@@ -1,0 +1,93 @@
+/* Favorites topics OffCanvas */
+
+.offCanvas {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    min-width: 100vw;
+    width: 100vw;
+    height: 270px;
+    background-color: var(--bg-body);
+    color: var(--body-text);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    padding-block: 1em;
+    pointer-events: none;
+  }
+  
+  .offCanvas.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .cardsList {
+    display: flex;
+    margin-top: 1em;
+    gap: 1em;
+    padding-block: 0.5em;
+  }
+  
+  .cardItem {
+    width: 15%;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-inline: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 1em;
+    gap: 0.2em;
+    transition: transform 0.3s;
+  }
+  
+  .cardItem img {
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    justify-self: center;
+    border-bottom: 1px black solid;
+  }
+  
+  .cardItem:hover {
+    transform: scale(1.1);
+  }
+  
+  .cardItemFavImgWrapper {
+    max-height: 100px;
+    max-width: 200px;
+  }
+  
+
+  @media (max-width: 400px) {
+    .offCanvas {
+      height: 300px;
+    }
+  
+    .offCanvas.active {
+      opacity: 1;
+    }
+  
+    .cardsList {
+      gap: 1em;
+    }
+  
+    .cardItem {
+      width: 50%;
+      height: 140px;
+    }
+  
+    .cardItem img {
+      width: 100%;
+      height: 100%;
+      align-self: center;
+      justify-self: center;
+      border-bottom: 1px black solid;
+      object-fit: cover;
+    }
+  
+    .cardItem:hover {
+      transform: scale(1.1);
+    }
+  }
+  
