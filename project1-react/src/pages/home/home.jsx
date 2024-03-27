@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTopics } from "../../features/topics/services/topics.service";
+import { getTopicsAsync } from "../../features/topics/services/topics.service";
 import { SingleTopic } from "../../features/topics/components/single-topic/single-topic";
 import styles from "./home.module.css"; // Adjusted import here
 import { WelcomeBlock } from "../../shared/components/welcome-block/welcome-block";
@@ -11,34 +11,46 @@ export function Home() {
     const [isLoading, setIsLoading] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState('');
     const [selectedSort, setSelectedSort] = useState('default');
-    const [selectedCategory, setSelectedCategory] = useState('all');
+    const [selectedCategory, setSelectedCategory] = useState('All');
     const [filterdTopics, setFilterdTopics] = useState([]);
 
 
+    const getTopics = async () => {
+        setIsLoading(true);
+        const data = await getTopicsAsync();
+        setIsLoading(false);
+        if (!data) return;
+        setTopics(data);
+        setFilterdTopics(data);
+
+    };
 
     useEffect(() => {
-        setIsLoading(true);
-        getTopics()
-            .then(data => {
-                let topicsTobeSorted = data;
-                topicsTobeSorted.sort((a, b) => {
-                    if (selectedSort === 'title') {
-                        return a.topic.localeCompare(b.topic);
-                    } else if (selectedSort === 'author') {
-                        return a.name.localeCompare(b.name);
-                    }
-                    return 0;
-                });
-                setTopics(topicsTobeSorted);
-                setFilterdTopics(topicsTobeSorted);
-                setIsLoading(false);
-
-            })
-            .catch(error => {
-                console.error("Error in fetching topics:", error);
-            });
+        getTopics();
     }, []);
 
+
+    /*
+    Use effect to handle selected category
+
+    */
+    useEffect(() => {
+
+        let topicsWithSortAndFilter = selectedCategory === 'All' ?
+            [...topics] : [...topics].filter(topic => topic.category === selectedCategory);
+        topicsWithSortAndFilter.sort((a, b) => {
+            if (selectedSort === 'title') {
+                return a.topic.localeCompare(b.topic);
+            } else if (selectedSort === 'author') {
+                return a.name.localeCompare(b.name);
+            }
+            return 0;
+        });
+
+        setFilterdTopics(topicsWithSortAndFilter);
+
+
+    }, [selectedCategory, selectedSort])
     const getCategories = (topics) => {
         const categories = new Set(topics.map(topic => topic.category));
         return ['All', ...categories];
@@ -46,28 +58,13 @@ export function Home() {
     }
 
 
+
+
     const getSortOptions = () => {
         return ['default', 'title', 'author'];
     }
 
 
-    const onSortChange = (e) => {
-        setSelectedSort(e.target.value);
-        if (e.target.value === 'default') {
-            setFilterdTopics(topics);
-        } else {
-            filterdTopics.sort((a, b) => {
-                if (e.target.value === 'title') {
-                    return a.topic.localeCompare(b.topic);
-                } else if (e.target.value === 'author') {
-                    return a.name.localeCompare(b.name);
-                }
-                return 0;
-            });
-            setFilterdTopics(filterdTopics);
-        }
-
-    }
 
 
 
@@ -100,15 +97,7 @@ export function Home() {
     }, 300);
 
 
-    const onFilterChanged = (e) => {
-        setSelectedCategory(e.target.value);
-        if (e.target.value === 'All') {
-            setFilterdTopics(topics);
-        } else {
-            setFilterdTopics([...topics].filter(topic => topic.category === e.target.value));
-        }
 
-    }
 
 
 
@@ -137,17 +126,17 @@ export function Home() {
 
                                 <div className="col-6 col-md-2">
                                     <span className={styles.filterSelectLabel} aria-label="Select sort by order">Sort by:</span>
-                                    <select id="sortSelect" onChange={onSortChange}>
+                                    <select id="sortSelect" onChange={(e) => setSelectedSort(e.target.value)}>
                                         {
                                             getSortOptions().map((option, index) => (
-                                                <option key={`${option}-${index}`} value={option} onChange={onSortChange}>{option}</option>
+                                                <option key={`${option}-${index}`} value={option}>{option}</option>
                                             ))
                                         }
                                     </select>
                                 </div>
                                 <div className="col-6 col-md-3">
                                     <span className={styles.filterSelectLabel} aria-label="Select sort by filter">Filter by:</span>
-                                    <select id="filterSelect" onChange={onFilterChanged}>
+                                    <select id="filterSelect" onChange={(e) => setSelectedCategory(e.target.value)}>
                                         {
                                             getCategories(topics).map((category, index) => (
                                                 <option key={`${category}-${index}`} value={category}>{category}</option>
