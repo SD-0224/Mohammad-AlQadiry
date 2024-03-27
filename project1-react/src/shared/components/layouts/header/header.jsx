@@ -1,6 +1,9 @@
+import { useFavoriteTopics } from '../../../contexts/favorite-topics.context';
 import styles from './header.module.css';
 import { Link } from 'react-router-dom';
 export function Header() {
+    const { toggleFavoriteTopics } = useFavoriteTopics();
+
     return (
         <>
             <header className={styles.header}>
@@ -12,7 +15,7 @@ export function Header() {
                                 Dark
                                 Mode
                             </span></button>
-                        <button id="toggle-favorites" className={styles.btnHeader}>
+                        <button id="toggle-favorites" onClick={toggleFavoriteTopics} className={styles.btnHeader}>
                             <ion-icon name="heart-outline" aria-label="favorites list"></ion-icon><span className={styles.btnText}>
                                 Favorites
                             </span></button>

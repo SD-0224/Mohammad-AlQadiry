@@ -5,6 +5,8 @@ import { AppLayout } from './shared/components/layouts/app-layout/app-layout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from './pages/home/home';
 import { Details } from './pages/details/details';
+import { FavoriteTopicsProvider } from './shared/contexts/favorite-topics.context';
+
 
 
 
@@ -13,14 +15,16 @@ export default function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <AppLayout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/details/:id" element={<Details />} />
-          </Routes>
-        </AppLayout>
-      </BrowserRouter>
+      <FavoriteTopicsProvider>
+        <BrowserRouter>
+          <AppLayout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/details/:id" element={<Details />} />
+            </Routes>
+          </AppLayout>
+        </BrowserRouter>
+      </FavoriteTopicsProvider>
     </>
   );
 }

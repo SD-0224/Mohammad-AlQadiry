@@ -4,7 +4,7 @@ import { SingleTopic } from "../../features/topics/components/single-topic/singl
 import styles from "./home.module.css"; // Adjusted import here
 import { WelcomeBlock } from "../../shared/components/welcome-block/welcome-block";
 import { LoadingSpinner } from "../../shared/components/loading-spinner/loading-spinner";
-import { useDebounce } from "../../shared/helpers/hooks/debounce";
+import { useDebounce } from "../../shared/hooks/debounce";
 
 export function Home() {
     const [topics, setTopics] = useState([]);

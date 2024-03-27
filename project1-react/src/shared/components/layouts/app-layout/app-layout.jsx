@@ -1,5 +1,6 @@
 import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
+import { FavoriteTopics } from '../../favorite-topics/favorite-topics';
 
 export function AppLayout({ children }) {
     return (
@@ -7,6 +8,8 @@ export function AppLayout({ children }) {
             <Header />
             {children}
             <Footer />
+
+            <FavoriteTopics />
 
         </>
     )
