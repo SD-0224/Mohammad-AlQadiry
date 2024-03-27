@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import { AppLayout } from './components/layouts/app-layout/app-layout';
+import { AppLayout } from './shared/components/layouts/app-layout/app-layout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from './pages/home/home';
 import { Details } from './pages/details/details';
