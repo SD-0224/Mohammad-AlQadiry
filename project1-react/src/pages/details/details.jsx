@@ -5,10 +5,12 @@ import styles from "./details.module.css";
 import { renderStars } from "../../shared/helpers/helpers";
 import { getTopicById } from "../../features/topics/services/topics.service";
 import { LoadingSpinner } from "../../shared/components/loading-spinner/loading-spinner";
+import { useFavoriteTopics } from "../../shared/contexts/favorite-topics.context";
 
 export function Details() {
     const [topic, setTopic] = useState(null);
     const { id } = useParams();
+    const { addToFavorites, removeFromFavorites, isFavoriteTopic } = useFavoriteTopics();
 
 
     useEffect(() => {
@@ -56,10 +58,21 @@ export function Details() {
 
                             <div className={styles.addToFavorite}>
                                 <p>Interested about this topic?</p>
-                                <button className={styles.btnFav}>
-                                    <span className={styles.favText}>Add To Favorites</span>
-                                    <ion-icon name="heart-outline" aria-label="Add to favorites"></ion-icon>
-                                </button>
+                                {
+                                    isFavoriteTopic(topic.id) ?
+                                        <button onClick={() => removeFromFavorites(topic.id)} className={styles.btnFav}>
+                                            <span className={styles.favText}>Remove From Favorites</span>
+                                            <ion-icon name="heart-sharp" aria-label="Remove from favorites"></ion-icon>
+                                        </button>
+
+                                        :
+                                        <button onClick={() => addToFavorites(topic)} className={styles.btnFav}>
+                                            <span className={styles.favText}>Add To Favorites</span>
+                                            <ion-icon name="heart-outline" aria-label="Add to favorites"></ion-icon>
+                                        </button>
+
+
+                                }
                                 <span className={styles.lightGrey}>Unlimited Credits</span>
                             </div>
                         </div>

@@ -2,7 +2,7 @@ import { useFavoriteTopics } from '../../../contexts/favorite-topics.context';
 import styles from './header.module.css';
 import { Link } from 'react-router-dom';
 export function Header() {
-    const { toggleFavoriteTopics } = useFavoriteTopics();
+    const { toggleFavoriteTopics, showFavoriteTopics } = useFavoriteTopics();
 
     return (
         <>
@@ -16,7 +16,12 @@ export function Header() {
                                 Mode
                             </span></button>
                         <button id="toggle-favorites" onClick={toggleFavoriteTopics} className={styles.btnHeader}>
-                            <ion-icon name="heart-outline" aria-label="favorites list"></ion-icon><span className={styles.btnText}>
+
+                            <ion-icon name="heart-outline"
+                                className={`${showFavoriteTopics ? styles.heartActive : ''}`}
+                            ></ion-icon>
+
+                            <span className={`${styles.btnText} ${showFavoriteTopics ? styles.heartActive : ''}`}>
                                 Favorites
                             </span></button>
                     </div>
