@@ -15,9 +15,9 @@ export function Home() {
     const [filterdTopics, setFilterdTopics] = useState([]);
 
 
-    const getTopics = async () => {
+    const getTopics = async (searchPharse) => {
         setIsLoading(true);
-        const data = await getTopicsAsync();
+        const data = await getTopicsAsync(searchPharse);
         setIsLoading(false);
         if (!data) return;
         setTopics(data);
@@ -25,15 +25,12 @@ export function Home() {
 
     };
 
+    //#region Hooks 
     useEffect(() => {
         getTopics();
     }, []);
 
 
-    /*
-    Use effect to handle selected category
-
-    */
     useEffect(() => {
 
         let topicsWithSortAndFilter = selectedCategory === 'All' ?
@@ -51,6 +48,20 @@ export function Home() {
 
 
     }, [selectedCategory, selectedSort])
+
+    useEffect(() => {
+        debounceOnSearchChange(searchPhrase);
+    }, [searchPhrase]);
+
+
+    const debounceOnSearchChange = useDebounce((searchPhrase) => {
+        getTopics(searchPhrase);
+    }, 300);
+
+
+
+    //#endregion Hooks
+
     const getCategories = (topics) => {
         const categories = new Set(topics.map(topic => topic.category));
         return ['All', ...categories];
@@ -63,43 +74,6 @@ export function Home() {
     const getSortOptions = () => {
         return ['default', 'title', 'author'];
     }
-
-
-
-
-
-    const onSearchChange = (e) => {
-        const searchPhrase = e.target.value;
-        setSearchPhrase(searchPhrase);
-        debounceOnSearchChange(searchPhrase);
-
-    }
-
-    const debounceOnSearchChange = useDebounce((searchPhrase) => {
-        setIsLoading(true);
-        getTopics(searchPhrase)
-            .then(data => {
-                let topicsTobeSorted = data;
-                topicsTobeSorted.sort((a, b) => {
-                    if (selectedSort === 'title') {
-                        return a.topic.localeCompare(b.topic);
-                    } else if (selectedSort === 'author') {
-                        return a.name.localeCompare(b.name);
-                    }
-                    return 0;
-                });
-                setTopics(topicsTobeSorted);
-                setIsLoading(false);
-            })
-            .catch(error => {
-                console.error("Error in fetching topics:", error);
-            });
-    }, 300);
-
-
-
-
-
 
 
     return (
@@ -117,7 +91,7 @@ export function Home() {
                                         <ion-icon name="search-outline"></ion-icon>
 
                                         <input id="searchInput" name="search" value={searchPhrase} placeholder="Search the website..."
-                                            aria-label="search input" onChange={onSearchChange} />
+                                            aria-label="search input" onChange={(e) => setSearchPhrase(e.target.value)} />
                                     </div>
 
 
