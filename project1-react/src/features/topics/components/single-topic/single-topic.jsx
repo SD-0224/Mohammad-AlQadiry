@@ -8,7 +8,7 @@ export function SingleTopic({ topic }) {
     return (
         <>
 
-            <div className={`${styles.topicItem} card`}>
+            <div className={` card ${styles.topicItem} `}>
                 <Link to={`details/${topic.id}`}>
                     <div className={styles.topicItemImgWrapper}>
                         <img src={`assets/images/${topic.image}`} alt={`${topic.topic} image`} className="card-img-top" />

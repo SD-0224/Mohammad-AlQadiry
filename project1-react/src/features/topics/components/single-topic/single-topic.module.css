@@ -1,6 +1,7 @@
 /* Adjusting class names to camelCase */
 .topicItem {
-    background-color: var(--bg-default);
+    background-color: var(--bg-default) !important;
+    color: var(--body-text) !important;
     padding: 0;
     max-height: 300px;
     height: 270px;

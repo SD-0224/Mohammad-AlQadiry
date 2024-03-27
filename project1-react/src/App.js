@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from './pages/home/home';
 import { Details } from './pages/details/details';
 import { FavoriteTopicsProvider } from './shared/contexts/favorite-topics.context';
+import { DarkModeProvider } from './shared/contexts/darkmode.context';
 
 
 
@@ -15,16 +16,19 @@ export default function App() {
 
   return (
     <>
-      <FavoriteTopicsProvider>
-        <BrowserRouter>
-          <AppLayout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/details/:id" element={<Details />} />
-            </Routes>
-          </AppLayout>
-        </BrowserRouter>
-      </FavoriteTopicsProvider>
+      <DarkModeProvider>
+        <FavoriteTopicsProvider>
+          <BrowserRouter>
+            <AppLayout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/details/:id" element={<Details />} />
+              </Routes>
+            </AppLayout>
+          </BrowserRouter>
+        </FavoriteTopicsProvider>
+      </DarkModeProvider>
+
     </>
   );
 }
