@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './favorite-topics.module.css'; // Adjust the import path as needed
 import { useFavoriteTopics } from '../../contexts/favorite-topics.context';
 import { renderStars } from "../../helpers/helpers";
+import { Link } from "react-router-dom"
 
 
 export function FavoriteTopics() {
@@ -16,10 +17,10 @@ export function FavoriteTopics() {
 
                         favoriteTopics.map(topic =>
                             <div className={styles.cardItem}>
-                                <a href="#" className={styles.cardItemFavImgWrapper}>
+                                <Link to={`/details/${topic.id}`} className={styles.cardItemFavImgWrapper}>
                                     <img src={`/assets/images/${topic.image}`} alt={`${topic.topic} image`} />
-                                </a>
-                                <a className={styles.topicName} href="#">{topic.name}</a>
+                                </Link>
+                                <Link className={styles.topicName} to={`/details/${topic.id}`}>{topic.name}</Link>
                                 <div className={styles.stars}>
                                     {renderStars(topic.rating)}
                                 </div>
