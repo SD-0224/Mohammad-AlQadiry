@@ -99,6 +99,12 @@
   display: flex;
   gap: 0.5em;
   padding-block: 0.8em;
+  transition: transform 0.3s; 
+
+}
+.cardBody li:hover {
+  transform: scale(1.1); 
+  cursor: pointer;
 }
 
 .cardBody li:not(:last-child) {

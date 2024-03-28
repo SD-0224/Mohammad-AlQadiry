@@ -101,6 +101,7 @@ select {
   -moz-appearance: none;
   appearance: none;
   color: var(--body-text);
+  background-color: var(--bg-default);
 }
 
 /* Common */
