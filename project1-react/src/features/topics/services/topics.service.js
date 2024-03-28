@@ -16,16 +16,15 @@ export async function getTopicsAsync(searchPhrase = '') {
 
 }
 
-export function getTopicById(id) {
-    return fetch(`${baseUrl}/topics/details/${id}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        });
 
+export async function getTopicByIdAsync(id) {
+    const response = await fetch(`${baseUrl}/topics/details/${id}`);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log(data);
+    return data;
 }
-
 
 

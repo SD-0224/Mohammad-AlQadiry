@@ -3,7 +3,7 @@ import { WelcomeBlock } from "../../shared/components/welcome-block/welcome-bloc
 import { useParams } from "react-router-dom";
 import styles from "./details.module.css";
 import { renderStars } from "../../shared/helpers/helpers";
-import { getTopicById } from "../../features/topics/services/topics.service";
+import { getTopicByIdAsync } from "../../features/topics/services/topics.service";
 import { LoadingSpinner } from "../../shared/components/loading-spinner/loading-spinner";
 import { useFavoriteTopics } from "../../shared/contexts/favorite-topics.context";
 
@@ -12,20 +12,15 @@ export function Details() {
     const { id } = useParams();
     const { addToFavorites, removeFromFavorites, isFavoriteTopic } = useFavoriteTopics();
 
+    const getTopic = async () => {
+
+        const data = await getTopicByIdAsync(id);
+        setTopic(data);
+
+    }
 
     useEffect(() => {
-
-        getTopicById(id)
-            .then(data => {
-                setTopic(data);
-
-
-
-            })
-            .catch(error => {
-                console.error("Error in fetching topic:", error);
-            });
-
+        getTopic();
     }, [id])
 
     if (!topic) {
